@@ -50,5 +50,22 @@ $di->set('router', function () use ($modules, $defaultModule) {
         'params' => 4
     ));
 
+    $router->add('/:module/:controller/:action[/]?', array(
+        'module' => 1,
+        'controller' => 2,
+        'action' => 3
+    ));
+
+    $router->add('/:module/:controller[/]?', array(
+        'module' => 1,
+        'controller' => 2,
+        'action' => 'index'
+    ));
+
+    $router->add('/:module[/]?', array(
+        'controller' => 'error',
+        'action' => 'e404'
+    ));
+
     return $router;
 });
