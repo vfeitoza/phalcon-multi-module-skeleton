@@ -16,7 +16,7 @@ return new \Phalcon\Config(array(
         'pluginsDir' => APP_DIR . 'plugins' . DS,
         'libraryDir' => APP_DIR . 'library' . DS,
         'cacheDir' => APP_DIR . 'cache' . DS,
-        'baseUri' => '/phalcon-multi-module-skeleton/',
+        'baseUri' => '/',
         'defaultModule' => ''
     )
 ));
