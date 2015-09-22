@@ -1,6 +1,6 @@
 <?php
 
-namespace Mod\ModMan\Controllers; 
+namespace Mod\ModMan\Controllers;
 
 use Phalcon\Mvc\Controller;
 

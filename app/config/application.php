@@ -10,8 +10,8 @@ $application = new \Phalcon\Mvc\Application($di);
 /**
  * Register application modules
  */
-if(isset($modules) && !empty($modules)) {
-	$application->registerModules($modules);
+if (isset($modules) && !empty($modules)) {
+    $application->registerModules($modules);
 }
 
 echo $application->handle()->getContent();

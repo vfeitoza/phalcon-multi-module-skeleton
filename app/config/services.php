@@ -15,7 +15,7 @@ $di = new FactoryDefault();
 /**
  * The URL component is used to generate all kind of urls in the application
  */
-$di['url'] = function() use ($config) {
+$di['url'] = function () use ($config) {
     $url = new UrlResolver();
     $url->setBaseUri($config->application->baseUri);
     return $url;
@@ -24,7 +24,7 @@ $di['url'] = function() use ($config) {
 /**
  * Start the session the first time some component request the session service
  */
-$di['session'] = function() {
+$di['session'] = function () {
     $session = new SessionAdapter();
     $session->start();
     return $session;
@@ -33,7 +33,7 @@ $di['session'] = function() {
 /**
  *  Prevent CSRF
  */
-$di->setShared('session', function() {
+$di->setShared('session', function () {
     $session = new Phalcon\Session\Adapter\Files();
     $session->start();
     return $session;
@@ -42,33 +42,33 @@ $di->setShared('session', function() {
 /**
  *  Set Flash
  */
-$di->set('flash', function() {
+$di->set('flash', function () {
     return new Phalcon\Flash\Session(array(
-            'error' => 'alert alert-dismissable alert-danger',
-            'success' => 'alert alert-dismissable alert-success',
-            'notice' => 'alert alert-dismissable alert-info',
-            'warning' => 'alert alert-dismissable alert-warning',
-        ));
+        'error' => 'alert alert-dismissable alert-danger',
+        'success' => 'alert alert-dismissable alert-success',
+        'notice' => 'alert alert-dismissable alert-info',
+        'warning' => 'alert alert-dismissable alert-warning',
+    ));
 });
 
-$di->set('view', function() use ($config) {
+$di->set('view', function () use ($config) {
 
     $view = new \Phalcon\Mvc\View();
 
     $view->setViewsDir($config->application->viewsDir);
-    
+
     $view->setMainView('index');
 
     $view->registerEngines(array(
-        '.volt' => function($view, $di) {
-        $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
-        $volt->setOptions(array(
-          'compiledPath' => APP_DIR . 'views' . DS .'_compiled' . DS,
-          'stat' => true,
-          'compileAlways' => true  
-        ));
-        return $volt;
-        }
+        '.volt' => function ($view, $di) {
+                $volt = new \Phalcon\Mvc\View\Engine\Volt($view, $di);
+                $volt->setOptions(array(
+                    'compiledPath' => APP_DIR . 'views' . DS . '_compiled' . DS,
+                    'stat' => true,
+                    'compileAlways' => true
+                ));
+                return $volt;
+            }
     ));
 
     return $view;
