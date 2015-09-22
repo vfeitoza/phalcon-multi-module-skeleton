@@ -15,7 +15,7 @@ class Module implements ModuleDefinitionInterface
     /**
      * Register a specific autoloader for the module
      */
-    public function registerAutoloaders()
+    public function registerAutoloaders(\Phalcon\DiInterface $dependencyInjector = null)
     {
 
         $loader = new Loader();
@@ -33,7 +33,7 @@ class Module implements ModuleDefinitionInterface
     /**
      * Register specific services for the module
      */
-    public function registerServices($di)
+    public function registerServices(\Phalcon\DiInterface $dependencyInjector)
     {
 
         /**
@@ -42,7 +42,7 @@ class Module implements ModuleDefinitionInterface
         $config = require_once(MODULES_DIR . $this->module_name . DS . "config" . DS . "config.php");
 
         //Registering a dispatcher
-        $di->set('dispatcher', function () {
+        $dependencyInjector->set('dispatcher', function () {
             $dispatcher = new \Phalcon\Mvc\Dispatcher();
 
             //Attach a event listener to the dispatcher
@@ -59,7 +59,7 @@ class Module implements ModuleDefinitionInterface
         /**
          * Setting up the view component
          */
-        $di->set('view', function () use ($config) {
+        $dependencyInjector->set('view', function () use ($config) {
 
             $view = new \Phalcon\Mvc\View();
 
@@ -88,7 +88,7 @@ class Module implements ModuleDefinitionInterface
          * Database connection is created based in the parameters defined in the configuration file
          * http://stackoverflow.com/questions/22197678/how-to-connect-multiple-database-in-phalcon-framework
          */
-        $di->set('db', function () use ($config) {
+        $dependencyInjector->set('db', function () use ($config) {
             return new DbAdapter(array(
                 "host" => $config->database->host,
                 "username" => $config->database->username,
