@@ -13,7 +13,10 @@
     {{ content() }}
 </div>
 <footer style="position: absolute; margin-left: auto;margin-right: auto;bottom: 0px;right: 7px; font-size: 9px;">
-    <center>Maintained by <a href="http://nasrulhazim.wordpress.com">nasrulhazim.m</a></center>
+    <center>
+        Maintained by: <a href="http://vfeitoza.com.br">vfeitoza</a> and
+        forked from <a href="https://github.com/nasrulhazim/phalcon-multi-module-skeleton">https://github.com/nasrulhazim/phalcon-multi-module-skeleton</a>
+    </center>
 </footer>
 {{ javascript_include("js/jquery-1.11.2.min.js") }}
 {{ javascript_include("js/bootstrap.min.js") }}
