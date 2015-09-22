@@ -1,3 +1,4 @@
+.idea
 app/cache/**
 app/logs/**
 app/views/_compiled/*.volt.php
