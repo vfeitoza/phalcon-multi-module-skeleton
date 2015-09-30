@@ -51,6 +51,18 @@ $di->set('flash', function () {
     ));
 });
 
+/**
+ *  Set flashSession
+ */
+$di->set('flashSession', function () {
+    return new Phalcon\Flash\Session(array(
+        'error' => 'alert alert-dismissable alert-danger',
+        'success' => 'alert alert-dismissable alert-success',
+        'notice' => 'alert alert-dismissable alert-info',
+        'warning' => 'alert alert-dismissable alert-warning',
+    ));
+});
+
 $di->set('view', function () use ($config) {
 
     $view = new \Phalcon\Mvc\View();
